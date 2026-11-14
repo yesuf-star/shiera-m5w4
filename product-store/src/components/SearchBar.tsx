@@ -32,7 +32,7 @@ export default function SearchBar({
           onChange(event.target.value)
         }
         placeholder="Search products..."
-        className="w-full rounded-xl border border-zinc-700 bg-zinc-900 py-3 pl-11 pr-4 text-white placeholder:text-zinc-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+        className="w-full rounded-xl border border-zinc-700 bg-zinc-300 py-3 pl-11 pr-4 text-white placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
       />
     </div>
   );

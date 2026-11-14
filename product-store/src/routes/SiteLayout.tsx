@@ -17,7 +17,7 @@ export function SiteLayout() {
     /^\/products\/[^/]+$/.test(pathname);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen bg-linear-to-br from-violet-50 via-violet-200 to-purple-300">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-violet-600 focus:px-4 focus:py-3 focus:font-semibold focus:text-white focus:outline-none focus:ring-2 focus:ring-white"

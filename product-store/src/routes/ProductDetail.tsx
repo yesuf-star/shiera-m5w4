@@ -27,7 +27,7 @@ import {
 
 import {
   productQuery,
-} from "../queries/products";
+} from "../queries/Products";
 
 import AddToCartButton from "../features/cart/AddToCartButton";
 
@@ -83,7 +83,7 @@ function ProductDetailContent({
     <article>
       <Link
         to="/"
-        className="mb-8 inline-flex items-center gap-2 rounded-lg text-zinc-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+        className="mb-8 inline-flex items-center gap-2 rounded-lg  transition hover:text-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
       >
         <ArrowLeft
           size={18}
@@ -126,7 +126,7 @@ function ProductDetailContent({
             </span>
           </div>
 
-          <p className="mt-6 leading-7 text-zinc-400">
+          <p className="mt-6 leading-7">
             {product.description}
           </p>
 
@@ -134,7 +134,7 @@ function ProductDetailContent({
             ${product.price.toFixed(2)}
           </p>
 
-          <p className="mt-2 text-sm text-zinc-500">
+          <p className="mt-2 text-sm text-zinc-800">
             {product.stock} available
           </p>
 

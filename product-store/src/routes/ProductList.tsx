@@ -1,3 +1,4 @@
+
 import {
   Suspense,
   useDeferredValue,
@@ -11,19 +12,15 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 
-import {
-  useSearchParams,
-} from "react-router";
+import { useSearchParams } from "react-router";
 
-import {
-  LIMIT,
-} from "../api/products";
+import { LIMIT } from "../api/products";
 
 import {
   categoryProductsQuery,
   productListQuery,
   productSearchQuery,
-} from "../queries/products";
+} from "../queries/Products";
 
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
@@ -40,8 +37,7 @@ const categories = [
   "fragrances",
 ] as const;
 
-type Category =
-  (typeof categories)[number];
+type Category = (typeof categories)[number];
 
 function CategoryProductGrid({
   category,
@@ -53,7 +49,7 @@ function CategoryProductGrid({
   );
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {data.products.map((product) => (
         <ProductCard
           key={product.id}
@@ -77,7 +73,7 @@ function AllProducts({
   const products = data?.products ?? [];
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product) => (
         <ProductCard
           key={product.id}
@@ -105,13 +101,10 @@ export default function ProductList() {
     Number(searchParams.get("page")) || 1,
   );
 
-  const deferredSearch =
-    useDeferredValue(search);
+  const deferredSearch = useDeferredValue(search);
 
   const searchQuery = useQuery(
-    productSearchQuery(
-      deferredSearch.trim(),
-    ),
+    productSearchQuery(deferredSearch.trim()),
   );
 
   const listQuery = useQuery({
@@ -129,15 +122,11 @@ export default function ProductList() {
     (listQuery.data?.total ?? 0) / LIMIT,
   );
 
-  function changeCategory(
-    nextCategory: Category,
-  ) {
+  function changeCategory(nextCategory: Category) {
     startTransition(() => {
       setCategory(nextCategory);
       setSearch("");
-      setSearchParams({
-        page: "1",
-      });
+      setSearchParams({ page: "1" });
     });
   }
 
@@ -154,27 +143,33 @@ export default function ProductList() {
 
   return (
     <section>
-      <div className="mb-10">
-        <p className="text-sm font-semibold uppercase tracking-widest text-violet-400">
-          Product catalog
+      {/* Store Introduction */}
+      <div className="mb-8 text-center">
+        <p className="text-2xl font-bold uppercase tracking-[0.2em] text-indigo-950 underline">
+          Welcome to our store
         </p>
 
-        <h1 className="mt-3 text-4xl font-black">
-          Discover products
+        <h1 className="mt-4 text-lg font-bold leading-tight sm:text-5xl">
+          Find the products you love.
         </h1>
 
-        <p className="mt-3 max-w-2xl text-zinc-400">
-          Search products, browse categories,
-          and manage your cart.
+        <p className="mt-4 text-sm leading-7 sm:text-base">
+          Explore a carefully selected collection of products
+          designed to meet your needs. Find quality, style,
+          and value in one place.
         </p>
       </div>
 
-      <SearchBar
-        value={search}
-        onChange={setSearch}
-      />
+      {/* Search */}
+      <div className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <SearchBar
+          value={search}
+          onChange={setSearch}
+        />
+      </div>
 
-      <div className="mt-8">
+      {/* Categories */}
+      <div className="mb-8 flex flex-wrap justify-center gap-3">
         <div
           role="tablist"
           aria-label="Product category"
@@ -185,12 +180,8 @@ export default function ProductList() {
               key={item}
               type="button"
               role="tab"
-              aria-selected={
-                item === category
-              }
-              onClick={() =>
-                changeCategory(item)
-              }
+              aria-selected={item === category}
+              onClick={() => changeCategory(item)}
               className={`rounded-lg px-4 py-2 font-medium capitalize transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 ${
                 item === category
                   ? "bg-violet-600 text-white"
@@ -204,11 +195,12 @@ export default function ProductList() {
       </div>
 
       {search.trim().length === 1 && (
-        <p className="mt-5 text-sm text-zinc-400">
-          Type at least 2 characters to search.
+        <p className="mb-5 text-sm text-gray-500">
+          Enter at least 2 characters to search.
         </p>
       )}
 
+      {/* Products */}
       <div
         role="tabpanel"
         aria-busy={
@@ -216,10 +208,8 @@ export default function ProductList() {
           listQuery.isFetching ||
           searchQuery.isFetching
         }
-        className={`mt-8 transition-opacity ${
-          isPending
-            ? "opacity-60"
-            : "opacity-100"
+        className={`transition-opacity ${
+          isPending ? "opacity-60" : "opacity-100"
         }`}
       >
         {isSearching ? (
@@ -240,22 +230,32 @@ export default function ProductList() {
             {!searchQuery.isPending &&
               !searchQuery.isError &&
               searchProducts.length === 0 && (
-                <p className="text-zinc-400">
-                  No products found.
+                <p className="text-center text-zinc-400">
+                  No products found. Try another keyword.
                 </p>
               )}
 
             {searchProducts.length > 0 && (
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {searchProducts.map(
-                  (product) => (
+              <>
+                <div
+                  className={`grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${
+                    searchQuery.isFetching ? "opacity-60" : ""
+                  }`}
+                >
+                  {searchProducts.map((product) => (
                     <ProductCard
                       key={product.id}
                       product={product}
                     />
-                  ),
+                  ))}
+                </div>
+
+                {searchQuery.isFetching && (
+                  <p className="mt-4 text-center text-xs text-gray-800">
+                    Updating products...
+                  </p>
                 )}
-              </div>
+              </>
             )}
           </>
         ) : category === "all" ? (
@@ -266,24 +266,25 @@ export default function ProductList() {
               <AllProducts page={page} />
             )}
 
+            {listQuery.isFetching &&
+              !listQuery.isPending && (
+                <p className="mt-4 text-center text-xs text-gray-800">
+                  Updating products...
+                </p>
+              )}
+
             {totalPages > 1 && (
               <Pagination
                 page={page}
                 totalPages={totalPages}
-                disabled={
-                  listQuery.isPlaceholderData
-                }
+                disabled={listQuery.isPlaceholderData}
                 onPageChange={changePage}
               />
             )}
           </>
         ) : (
-          <Suspense
-            fallback={<ProductGridSkeleton />}
-          >
-            <CategoryProductGrid
-              category={category}
-            />
+          <Suspense fallback={<ProductGridSkeleton />}>
+            <CategoryProductGrid category={category} />
           </Suspense>
         )}
       </div>
