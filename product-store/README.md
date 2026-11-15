@@ -12,7 +12,7 @@
 |---|---:|---:|
 | `/` | **[93]** | **[95]** |
 | `/products/1` | **[93]** | **[100]** |
-| `/cart` | **[93]** | **[94]** |
+| `/cart` | **[93]** | **[100]** |
 
 > Replace `[score]` with your actual Lighthouse results.
 
@@ -29,8 +29,10 @@ Add your Lighthouse screenshots here:
 ![Before Home](./scr<img width="1920" height="1080" alt="Screenshot 2026-11-15 102514" src="https://github.com/user-attachments/assets/af2f2fdd-86e1-4093-a96d-c5eefaef4a8a" />
 eenshots/before-home.png)
 
-
+### detail page after
 <img width="1920" height="1080" alt="Screenshot 2026-11-15 113020" src="https://github.com/user-attachments/assets/6929b941-4634-4ea1-aaf4-13cf32a1c2fa" />
+### Cart after
+<img width="1920" height="1080" alt="Screenshot 2026-11-15 114352" src="https://github.com/user-attachments/assets/9cbb21ec-3fb7-4857-9e22-5675716eab07" />
 
 ### Accessibility Fixes
 
