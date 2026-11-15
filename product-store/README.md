@@ -64,8 +64,6 @@ Then:
 
 ### Delivery
 
-- **Repository:** [Paste GitHub URL]
-- **Live Demo:** [Paste deployment URL]
-- **Pull Request:** [Paste PR URL]
+- **Repository:** [[Paste GitHub URL](https://github.com/yesuf-star/shiera-m5w4)]
+- **Live Demo:** [shiera-m5w4.vercel.app]
 
-After merging the PR, confirm the deployment and paste the **repo URL, live URL, and after-audit screenshots** in Telegram.
