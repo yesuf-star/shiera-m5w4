@@ -10,9 +10,9 @@
 
 | Route | Before | After |
 |---|---:|---:|
-| `/` | **[score]** | **[score]** |
-| `/products/1` | **[score]** | **[score]** |
-| `/cart` | **[score]** | **[score]** |
+| `/` | **[93]** | **[95]** |
+| `/products/1` | **[93]** | **[100]** |
+| `/cart` | **[93]** | **[94]** |
 
 > Replace `[score]` with your actual Lighthouse results.
 
@@ -20,15 +20,17 @@
 
 Add your Lighthouse screenshots here:
 
-**Before**
+**before**
 
-![Before Home](./screenshots/before-home.png)
+<img width="1920" height="1080" alt="Screenshot 2026-11-14 220945" src="https://github.com/user-attachments/assets/310c76af-6b7d-4bff-ad4f-2a21e0ad081e" />
 
-**After**
+**after**
 
-![After Home](./screenshots/after-home.png)
+![Before Home](./scr<img width="1920" height="1080" alt="Screenshot 2026-11-15 102514" src="https://github.com/user-attachments/assets/af2f2fdd-86e1-4093-a96d-c5eefaef4a8a" />
+eenshots/before-home.png)
 
-Add screenshots for `/`, `/products/1`, and `/cart`.
+
+<img width="1920" height="1080" alt="Screenshot 2026-11-15 113020" src="https://github.com/user-attachments/assets/6929b941-4634-4ea1-aaf4-13cf32a1c2fa" />
 
 ### Accessibility Fixes
 
